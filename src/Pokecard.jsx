@@ -1,8 +1,14 @@
 import "./Pokecard.css";
-// TODO: Docstrings
-//TODO: Add a global constant for pokemon API endpiece
+
+const IMAGE_API_ENDPOINT = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+
+/** It renders a card for a pokemon.
+ * Props: name, id, type, exp.
+ * Pokecard <= Pokedex
+ */
+
 function Pokecard({name, id, type, exp}) {
-  const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+  const image = `${IMAGE_API_ENDPOINT}${id}.png`;
   return (
     <div className="Pokecard">
       <h3 className="Pokecard-title">{name}</h3>

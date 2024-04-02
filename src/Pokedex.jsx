@@ -1,26 +1,22 @@
 import Pokecard from "./Pokecard.jsx";
 import "./Pokedex.css";
-// TODO: Docstring
 
-const DEFAULT_POKELIST = [
-  {id: 4, name: "Charmander", type: "fire", base_experience: 62},
-  {id: 7, name: "Squirtle", type: "water", base_experience: 63},
-  {id: 11, name: "Metapod", type: "bug", base_experience: 72},
-  {id: 12, name: "Butterfree", type: "flying", base_experience: 178},
-  {id: 25, name: "Pikachu", type: "electric", base_experience: 112},
-  {id: 39, name: "Jigglypuff", type: "normal", base_experience: 95},
-  {id: 94, name: "Gengar", type: "poison", base_experience: 225},
-  {id: 133, name: "Eevee", type: "normal", base_experience: 65},
-];
 
-function Pokedex({pokeList = DEFAULT_POKELIST}) {
+
+/** It renders a pokecard element for each pokemon in the list.
+ * Props: list of pokemons.The default value is pokeList.
+ * Pokedex <= App
+ */
+
+function Pokedex({pokeList1, pokeList2, score1, score2}) {
   return (
     <div>
       <div className="Pokedex-title">
-        <h2>Pokedex</h2>
+        <h2>Player 1</h2>
+        <p>Score: {score1}</p>
       </div>
       <div className="Pokedex">
-        {pokeList.map((pokemon) => (
+        {pokeList1.map((pokemon) => (
           <Pokecard
             id={pokemon.id}
             name={pokemon.name}
@@ -28,6 +24,23 @@ function Pokedex({pokeList = DEFAULT_POKELIST}) {
             exp={pokemon.base_experience}
           />
         ))}
+      </div>
+      <div className="Pokedex-title">
+        <h2>Player 2</h2>
+        <p>Score: {score2}</p>
+      </div>
+      <div className="Pokedex">
+        {pokeList2.map((pokemon) => (
+          <Pokecard
+            id={pokemon.id}
+            name={pokemon.name}
+            type={pokemon.type}
+            exp={pokemon.base_experience}
+          />
+        ))}
+      </div>
+      <div>
+        <b>{score1 > score2 ? "First Player Wins!" : "Second Player Wins!"}</b>
       </div>
     </div>
   );
