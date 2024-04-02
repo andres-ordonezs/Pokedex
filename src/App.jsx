@@ -1,6 +1,7 @@
 import Pokedex from "./Pokedex.jsx";
+import Pokegame from "./Pokegame.jsx";
 import "./App.css";
-import { choice, sumExp } from "./helpers.jsx";
+
 
 /*
 1. What the component is doing
@@ -19,9 +20,8 @@ const DEFAULT_POKELIST = [
   {id: 133, name: "Eevee", type: "normal", base_experience: 65},
 ];
 
-const { firstHand, secondHand } = choice(DEFAULT_POKELIST);
-const FIRST_HAND_SCORE = sumExp(firstHand);
-const SECOND_HAND_SCORE = sumExp(secondHand);
+const { firstHand, secondHand, sumFirstHand, sumSecondHand } = Pokegame(DEFAULT_POKELIST);
+
 
 
 /** It renders pokedex elements.
@@ -30,7 +30,7 @@ const SECOND_HAND_SCORE = sumExp(secondHand);
 function App() {
   return (
     <div>
-      <Pokedex pokeList1={firstHand} pokeList2={secondHand} score1={FIRST_HAND_SCORE} score2={SECOND_HAND_SCORE}/>
+      <Pokedex pokeList1={firstHand} pokeList2={secondHand} score1={sumFirstHand} score2={sumSecondHand}/>
     </div>
   );
 }

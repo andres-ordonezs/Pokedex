@@ -1,5 +1,4 @@
-function choice(pokeList) {
-  console.log(pokeList);
+function Pokegame(pokeList) {
   const firstHand = [];
   const secondHand = [];
   const remainingPokemons = [];
@@ -19,16 +18,18 @@ function choice(pokeList) {
       i--;
     }
   }
-  return {firstHand, secondHand};
-}
 
-function sumExp(pokeList) {
-  let sum = 0;
-  for (let poke of pokeList) {
-    sum += poke.base_experience;
+    let sumFirstHand = 0;
+    let sumSecondHand = 0;
+    for (let poke of firstHand) {
+      sumFirstHand += poke.base_experience;
+    }
+
+    for (let poke of secondHand) {
+      sumSecondHand += poke.base_experience;
+    }
+    return { firstHand, secondHand, sumFirstHand, sumSecondHand };
   }
-  return sum;
-}
 
 
-export { choice, sumExp }
+export default Pokegame;
